@@ -1,21 +1,28 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Country } from "../utils/types";
+import { getCountryByCode } from "../utils/service";
 
 const CountryDetail = () => {
   const { code } = useParams();
   const [country, setCountry] = useState<Country | null>(null);
 
   useEffect(() => {
-    const fetchCountry = async () => {
-      const res = await fetch(`http://localhost:3000/countries/${code}`);
-      const data = await res.json();
-      setCountry(data);
-    };
-    fetchCountry();
+    if (code) {
+      const fetchCountry = async () => {
+        const countryData = await getCountryByCode(code);
+        setCountry(countryData);
+      };
+      fetchCountry();
+    }
   }, [code]);
 
-  if (!country) return <div className="text-center mt-10">Loading...</div>;
+  if (!country)
+    return (
+      <div className="text-center mt-4">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
@@ -23,7 +30,7 @@ const CountryDetail = () => {
       <img
         src={country.flag}
         alt={country.name}
-        className="w-full h-64 object-cover rounded-lg mb-4"
+        className="w-full h-64 bg-cover rounded-lg mb-4"
       />
       <ul className="list-disc pl-6 space-y-2">
         <li>

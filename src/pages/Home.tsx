@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Country } from "../utils/types";
 import { getAllCountries } from "../utils/service";
 import CountryCard from "../components/CountryCard";
+import SearchBar from "../components/SearchBar";
 
 const Home = () => {
   const [allCountries, setAllCountries] = useState<Country[]>([]);
@@ -50,6 +51,7 @@ const Home = () => {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-center mb-4">Country Explorer</h1>
+      <SearchBar countries={allCountries} setFiltered={setVisibleCountries} />
       <div className="flex flex-wrap justify-center gap-4">
         {visibleCountries.map((country, index) => (
           <CountryCard key={index} country={country} />

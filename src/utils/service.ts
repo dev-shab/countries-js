@@ -9,3 +9,12 @@ export const getAllCountries = async () => {
     console.error(error);
   }
 };
+
+export const getCountryByCode = async (code: string) => {
+  try {
+    const response = await axios.get(`BASE_URL/${code}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
