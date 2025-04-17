@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# 🌍 Country Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and fast React app built with TypeScript, Tailwind CSS, and DaisyUI to explore countries using a custom backend powered by the [REST Countries API](https://restcountries.com).
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Search countries by **name** or **capital**
+- 🌐 Filter by **region** and **timezone**
+- 🗺️ View detailed country info (flag, population, currency)
+- 📦 Clean UI with **Tailwind CSS + DaisyUI**
+- 🕒 Shows **local time** for each country
+- ⚙️ Built with **TypeScript** for type safety
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Frontend           | Styling                | State Management   |
+| ------------------ | ---------------------- | ------------------ |
+| React + TypeScript | Tailwind CSS + DaisyUI | useState/useEffect |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📦 Backend Installation and run
+
+```bash
+git clone https://github.com/dev-shab/countries-server.git
+cd countries-server
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+git clone https://github.com/dev-shab/countries-js.git
+cd countries-js
+npm install
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Make sure your backend (Node.js + Express) is running at `http://localhost:3000`.
+
+## 🧪 Scripts
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+
+## 📁 Project Structure
+
+```
+
+├── src/
+│ ├── components/ # Reusable UI components (Card, Search, Filters)
+│ ├── pages/ # Home, Country Detail
+│ ├── types/ # TypeScript types
+│ └── utils/ # Utility functions (optional)
+├── public/ # Static assets
+├── tailwind.config.ts # Tailwind + DaisyUI config
+├── tsconfig.json # TypeScript config
+├── README.md
+
+```
+
+## 🌐 API Reference
+
+The frontend talks to a custom Express backend that proxies the [REST Countries API](https://restcountries.com/v3.1/all). Example endpoints:
+
+- `GET /countries` — Fetch all countries
+- `GET /countries/:code` — Get country details by code
+- `GET /countries/search?name=India&region=Asia` — Search by name, region, capital, timezone
 ```
