@@ -50,6 +50,8 @@ npm run build
 
 ```
 
+```
+
 ├── src/
 │ ├── components/ # Reusable UI components (Card, Search, Filters)
 │ ├── pages/ # Home, Country Detail
@@ -66,6 +68,7 @@ npm run build
 
 The frontend talks to a custom Express backend that proxies the [REST Countries API](https://restcountries.com/v3.1/all). Example endpoints:
 
+```
 - `GET /countries` — Fetch all countries
 - `GET /countries/:code` — Get country details by code
 - `GET /countries/search?name=India&region=Asia` — Search by name, region, capital, timezone
