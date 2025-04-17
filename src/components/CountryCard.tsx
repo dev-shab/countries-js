@@ -1,13 +1,18 @@
 import { Country } from "../utils/types";
 import { getLocalTime } from "../utils/timeUtils";
+import { useNavigate } from "react-router";
 
 interface CountryCardProps {
   country: Country;
 }
 
 const CountryCard = ({ country }: CountryCardProps) => {
+  const navigate = useNavigate();
   return (
-    <div className="card w-80 bg-base-100 shadow-xl m-2">
+    <div
+      className="card w-80 bg-base-100 shadow-xl m-2"
+      onClick={() => navigate(`/country/${country.code}`)}
+    >
       <figure>
         <img
           src={country.flag}
