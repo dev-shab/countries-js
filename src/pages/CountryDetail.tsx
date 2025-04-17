@@ -40,7 +40,7 @@ const CountryDetail = () => {
           <strong>Capital:</strong> {country.capital}
         </li>
         <li>
-          <strong>Population:</strong> {country.population.toLocaleString()}
+          <strong>Population:</strong> {country.population}
         </li>
         <li>
           <strong>Currency:</strong> {country.currency}
